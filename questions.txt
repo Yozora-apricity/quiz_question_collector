@@ -1,1 +1,9 @@
 2 + 2 =|1|2|3|4|d
+Q: what is the capital city of Japan?
+A) Kyoto
+B) Nagasaki
+C) Tokyo
+D) Hiroshima
+ANSWER: c
+--- Added on 2025-04-07 22:29:43 ---
+
