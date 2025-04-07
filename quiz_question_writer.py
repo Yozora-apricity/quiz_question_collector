@@ -28,3 +28,9 @@ with open('questions.txt', 'a') as file:
         b = input("Enter option b: ")
         c = input("Enter option c: ")
         d = input("Enter option d: ")
+        
+        #Ask for correct answer
+        correct = input("Enter the correct answer (a-d): ").lower()
+        while correct not in {'a', 'b', 'c', 'd'}:
+            print("Invalid answer! Please enter a, b, c, or d.")
+            correct = input("Enter the correct answer (a-d): ").lower()
