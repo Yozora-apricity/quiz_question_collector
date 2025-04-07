@@ -18,3 +18,13 @@
 #   i. IF choice != 'y' THEN BREAK
 #4. CLOSE FILE
 #5. END
+
+
+with open('questions.txt', 'a') as file:
+    while True:
+        #Ask for question and options
+        question = input("Enter question: ")
+        a = input("Enter option a: ")
+        b = input("Enter option b: ")
+        c = input("Enter option c: ")
+        d = input("Enter option d: ")
