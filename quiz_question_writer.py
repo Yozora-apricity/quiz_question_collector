@@ -34,3 +34,11 @@ with open('questions.txt', 'a') as file:
         while correct not in {'a', 'b', 'c', 'd'}:
             print("Invalid answer! Please enter a, b, c, or d.")
             correct = input("Enter the correct answer (a-d): ").lower()
+            
+        # Write to file using pipe delimiter
+        file.write(f"{question}|{a}|{b}|{c}|{d}|{correct}\n")
+        
+         # Check if user wants to continue
+        if input("\nAdd another question? (y/n): ").lower() != 'y':
+            print("\nQuestions saved to questions.txt")
+            break
