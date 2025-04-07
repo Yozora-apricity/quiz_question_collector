@@ -38,8 +38,14 @@ with open('questions.txt', 'a') as file:
             
         timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
             
-        # Write to file using pipe delimiter
-        file.write(f"{question}|{a}|{b}|{c}|{d}|{correct}\n")
+        # Write file to make it more readable
+        file.write(f"Q: {question}\n")
+        file.write(f"A) {a}\n")
+        file.write(f"B) {b}\n")
+        file.write(f"C) {c}\n")
+        file.write(f"D) {d}\n")
+        file.write(f"ANSWER: {correct}\n")
+        file.write(f"--- Added on {timestamp} ---\n\n")
         
          # Check if user wants to continue
         if input("\nAdd another question? (y/n): ").lower() != 'y':
