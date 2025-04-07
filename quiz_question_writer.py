@@ -19,6 +19,7 @@
 #4. CLOSE FILE
 #5. END
 
+from datetime import datetime
 
 with open('questions.txt', 'a') as file:
     while True:
@@ -34,6 +35,8 @@ with open('questions.txt', 'a') as file:
         while correct not in {'a', 'b', 'c', 'd'}:
             print("Invalid answer! Please enter a, b, c, or d.")
             correct = input("Enter the correct answer (a-d): ").lower()
+            
+        timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
             
         # Write to file using pipe delimiter
         file.write(f"{question}|{a}|{b}|{c}|{d}|{correct}\n")
