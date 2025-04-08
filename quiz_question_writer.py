@@ -138,6 +138,7 @@ def manage_questions():
     except FileNotFoundError:
         print("No questions have been added yet.")
 
+#Delete all questions
 def delete_all_questions():
     confirm = input("Are you sure you want to delete all questions? (y/n): ").lower()
     if confirm == 'y':
@@ -147,7 +148,8 @@ def delete_all_questions():
     else:
         print("No questions were deleted.")
     main_menu()
-    
+
+#Delete a specific question
 def delete_specific_question(content):
     try:
         question_num = int(input("Enter the question number to delete: "))
