@@ -34,8 +34,7 @@ def main_menu():
     elif choice == '2':
         developer_info()
     elif choice == '3':
-        print("Feature under development.")
-        main_menu()
+        see_questions()
     elif choice == '4':
         print("Goodbye!")
         exit()
@@ -93,5 +92,28 @@ def create_quiz():
                 break
 
     main_menu()
+
+def see_questions():
+    print("\n--- View Questions ---")
+    try:
+        with open('questions.txt', 'r') as file:
+            content = file.read()
+            if content:
+                print(content)
+            else:
+                print("No questions available.")
+    except FileNotFoundError:
+        print("No questions have been added yet.")
+
+    while True:
+        choice = input("\nWould you like to go back to the main menu? (y/n): ").lower()
+        if choice == 'y':
+            main_menu()
+            break
+        elif choice == 'n':
+            print("Goodbye!")
+            exit()
+        else:
+            print("Invalid input. Please enter 'y' or 'n'.")
 
 main_menu()
