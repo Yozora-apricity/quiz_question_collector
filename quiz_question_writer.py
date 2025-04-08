@@ -51,33 +51,37 @@ def developer_info():
 
 def create_quiz():
     print("\n--- Create Quiz Questions ---")
-with open('questions.txt', 'a') as file:
-    while True:
+    with open('questions.txt', 'a') as file:
+        while True:
         #Ask for question and options
-        question = input("Enter question: ")
-        a = input("Enter option a: ")
-        b = input("Enter option b: ")
-        c = input("Enter option c: ")
-        d = input("Enter option d: ")
+            question = input("Enter question: ")
+            a = input("Enter option a: ")
+            b = input("Enter option b: ")
+            c = input("Enter option c: ")
+            d = input("Enter option d: ")
         
-        #Ask for correct answer
-        correct = input("Enter the correct answer (a-d): ").lower()
-        while correct not in {'a', 'b', 'c', 'd'}:
-            print("Invalid answer! Please enter a, b, c, or d.")
+            #Ask for correct answer
             correct = input("Enter the correct answer (a-d): ").lower()
+            while correct not in {'a', 'b', 'c', 'd'}:
+                print("Invalid answer! Please enter a, b, c, or d.")
+                correct = input("Enter the correct answer (a-d): ").lower()
             
-        timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+            timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
             
-        # Write file to make it more readable
-        file.write(f"Q: {question}\n")
-        file.write(f"A) {a}\n")
-        file.write(f"B) {b}\n")
-        file.write(f"C) {c}\n")
-        file.write(f"D) {d}\n")
-        file.write(f"ANSWER: {correct}\n")
-        file.write(f"--- Added on {timestamp} ---\n\n")
+            # Write file to make it more readable
+            file.write(f"Q: {question}\n")
+            file.write(f"A) {a}\n")
+            file.write(f"B) {b}\n")
+            file.write(f"C) {c}\n")
+            file.write(f"D) {d}\n")
+            file.write(f"ANSWER: {correct}\n")
+            file.write(f"--- Added on {timestamp} ---\n\n")
         
-         # Check if user wants to continue
-        if input("\nAdd another question? (y/n): ").lower() != 'y':
-            print("\nQuestions saved to questions.txt")
-            break
+             # Check if user wants to continue
+            if input("\nAdd another question? (y/n): ").lower() != 'y':
+                print("\nQuestions saved to questions.txt")
+                break
+
+    main_menu()
+
+main_menu()
