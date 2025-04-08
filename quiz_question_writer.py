@@ -43,6 +43,10 @@ def main_menu():
         print("Invalid choice. Please try again.")
         main_menu()
 
+def developer_info():
+    print("\nDeveloper: Gerald Tan Rogado")
+    print("Email: geraldtanrogado@gmail.com")
+    print("Github Profile: https://github.com/Yozora-apricity")
 
 with open('questions.txt', 'a') as file:
     while True:
