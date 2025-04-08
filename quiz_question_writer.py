@@ -36,7 +36,8 @@ def main_menu():
     print("1. \033[34mCreate Questions\033[0m")
     print("2. \033[35mDeveloper Info\033[0m")
     print("3. \033[33mSee Questions\033[0m")
-    print("4. \033[91mExit\033[0m")
+    print("4. \033[36mManage Questions\033[0m")
+    print("5.\033[91mExit\033[0m")
     
     choice = input("\033[97mEnter your choice 1-4: \033[0m")
     if choice == '1':
@@ -46,6 +47,8 @@ def main_menu():
     elif choice == '3':
         see_questions()
     elif choice == '4':
+        manage_questions()
+    elif choice == '5':
         print("Goodbye!")
         exit()
     else:
