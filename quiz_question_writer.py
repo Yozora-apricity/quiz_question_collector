@@ -44,9 +44,9 @@ def main_menu():
         main_menu()
 
 def developer_info():
-    print("\nDeveloper: Gerald Tan Rogado")
-    print("Email: geraldtanrogado@gmail.com")
-    print("Github Profile: https://github.com/Yozora-apricity")
+    print("\nDeveloper: \033[96mGerald Tan Rogado\033[0m")
+    print("Email: \033[95mgeraldtanrogado@gmail.com\033[0m")
+    print("Github Profile: \033[33mhttps://github.com/Yozora-apricity\033[0m")
 
     while True:
         choice = input("\nWould you like to go back to the main menu? (y/n): ").lower()
