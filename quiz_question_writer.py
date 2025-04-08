@@ -1,23 +1,33 @@
-#Pseudo code:
-#1. START
-#2. OPEN "questions.txt" IN APPEND MODE
-#3. WHILE True DO
-#   a. PROMPT "Enter question:" STORE TO question
-#   b. PROMPT "Enter option a:" STORE TO a
-#   c. PROMPT "Enter option b:" STORE TO b
-#   d. PROMPT "Enter option c:" STORE TO c
-#   e. PROMPT "Enter option d:" STORE TO d
-#   f. WHILE True DO
-#       i. PROMPT "Enter correct answer (a-d):" STORE TO correct
-#       ii. IF correct NOT IN ['a','b','c','d'] THEN
-#           - PRINT "Invalid answer"
-#         ELSE
-#           - BREAK
-#   g. WRITE question|a|b|c|d|correct TO FILE
-#   h. PROMPT "Add another? (y/n)" STORE TO choice
-#   i. IF choice != 'y' THEN BREAK
-#4. CLOSE FILE
-#5. END
+# Pseudo Code:
+# 1. START
+# 2. DISPLAY Main Menu with options:
+#    a. Create Questions
+#    b. Developer Info
+#    c. See Questions
+#    d. Exit
+# 3. IF user selects 'Create Questions' THEN
+#    a. OPEN "questions.txt" in append mode
+#    b. WHILE True DO
+#       i. GET question and options (a, b, c, d)
+#       ii. GET correct answer (a-d)
+#       iii. SAVE question, options, correct answer, and timestamp TO "questions.txt"
+#       iv. ASK "Add another question? (y/n)"
+#       v. IF 'n' THEN BREAK
+#    c. CLOSE file
+#    d. RETURN to Main Menu
+# 4. IF user selects 'Developer Info' THEN
+#    a. DISPLAY developer info (name, email, GitHub)
+#    b. ASK "Go back to main menu? (y/n)"
+#    c. IF 'y' THEN RETURN to Main Menu
+#    d. IF 'n' THEN EXIT
+# 5. IF user selects 'See Questions' THEN
+#    a. OPEN "questions.txt"
+#    b. IF file is empty THEN DISPLAY "No questions"
+#    c. ELSE DISPLAY all questions
+#    d. RETURN to Main Menu
+# 6. IF user selects 'Exit' THEN EXIT
+# 7. IF invalid choice THEN REPEAT Main Menu
+# 8. END
 
 from datetime import datetime
 
