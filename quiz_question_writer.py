@@ -138,4 +138,31 @@ def manage_questions():
     except FileNotFoundError:
         print("No questions have been added yet.")
 
+def delete_all_questions():
+    confirm = input("Are you sure you want to delete all questions? (y/n): ").lower()
+    if confirm == 'y':
+        with open('questions.txt', 'w') as file:
+            file.truncate(0)
+        print("All questions have been deleted.")
+    else:
+        print("No questions were deleted.")
+    main_menu()
+    
+def delete_specific_question(content):
+    try:
+        question_num = int(input("Enter the question number to delete: "))
+        if question_num < 1 or question_num > len(content):
+            print("Invalid question number.")
+            manage_questions()
+        else:
+            question_lines = [line for line in content if not line.startswith(f"{question_num}.")]
+            with open('questions.txt', 'w') as file:
+                file.writelines(question_lines)
+            print(f"Question {question_num} has been deleted.")
+            manage_questions()
+    except ValueError:
+        print("Invalid input. Please enter a valid number.")
+        manage_questions()
+        
+        
 main_menu()
