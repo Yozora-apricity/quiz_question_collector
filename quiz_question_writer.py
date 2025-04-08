@@ -105,15 +105,37 @@ def see_questions():
     except FileNotFoundError:
         print("No questions have been added yet.")
 
-    while True:
-        choice = input("\nWould you like to go back to the main menu? (y/n): ").lower()
-        if choice == 'y':
+def manage_questions():
+    print("\n--- Manage Questions ---")
+    try:
+        with open('questions.txt', 'r') as file:
+            content = file.readlines()
+
+        if not content:
+            print("No questions available.")
+            return
+        
+        print("\nCurrent Questions:")
+        for idx, line in enumerate(content, 1):
+            if line.startswith("Q:"):
+                print(f"{idx}. {line.strip()}")  # Displaying question lines with their index
+        print("\nOptions:")
+        print("1. Delete all questions")
+        print("2. Delete a specific question")
+        print("3. Go back to the main menu")
+
+        choice = input("\033[97mEnter your choice (1-3): \033[0m")
+
+        if choice == '1':
+            delete_all_questions()
+        elif choice == '2':
+            delete_specific_question(content)
+        elif choice == '3':
             main_menu()
-            break
-        elif choice == 'n':
-            print("Goodbye!")
-            exit()
         else:
-            print("Invalid input. Please enter 'y' or 'n'.")
+            print("Invalid choice. Please try again.")
+            manage_questions()
+    except FileNotFoundError:
+        print("No questions have been added yet.")
 
 main_menu()
