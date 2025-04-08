@@ -48,6 +48,9 @@ def developer_info():
     print("Email: geraldtanrogado@gmail.com")
     print("Github Profile: https://github.com/Yozora-apricity")
 
+
+def create_quiz():
+    print("\n--- Create Quiz Questions ---")
 with open('questions.txt', 'a') as file:
     while True:
         #Ask for question and options
