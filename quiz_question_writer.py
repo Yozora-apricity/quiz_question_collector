@@ -22,11 +22,11 @@
 from datetime import datetime
 
 def main_menu():
-    print("\nWelcome to the Quiz!")
+    print("\n\033[45mWelcome to the Main Menu!\033[0m")
     print("1. Create Questions")
     print("2. Developer Info")
     print("3. See Questions")
-    print("4. Exit")
+    print("4. \033[31mExit\033[0m")
     
     choice = input("Enter your choice 1-4: ")
     if choice == '1':
