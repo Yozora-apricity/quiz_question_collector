@@ -48,6 +48,16 @@ def developer_info():
     print("Email: geraldtanrogado@gmail.com")
     print("Github Profile: https://github.com/Yozora-apricity")
 
+    while True:
+        choice = input("\nWould you like to go back to the main menu? (y/n): ").lower()
+        if choice == 'y':
+            main_menu()
+            break
+        elif choice == 'n':
+            print("Goodbye!")
+            exit()
+        else:
+            print("Invalid input. Please enter 'y' or 'n'.")
 
 def create_quiz():
     print("\n--- Create Quiz Questions ---")
