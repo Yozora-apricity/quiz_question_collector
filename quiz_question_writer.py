@@ -25,7 +25,7 @@ def main_menu():
     print("\n\033[32mWelcome to the Main Menu!\033[0m")
     print("1. \033[34mCreate Questions\033[0m")
     print("2. \033[35mDeveloper Info\033[0m")
-    print("3. \033[97mSee Questions\033[0m")
+    print("3. \033[33mSee Questions\033[0m")
     print("4. \033[91mExit\033[0m")
     
     choice = input("\033[97mEnter your choice 1-4: \033[0m")
