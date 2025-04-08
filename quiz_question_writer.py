@@ -21,6 +21,29 @@
 
 from datetime import datetime
 
+def main_menu():
+    print("\nWelcome to the Quiz!")
+    print("1. Create Questions")
+    print("2. Developer Info")
+    print("3. See Questions")
+    print("4. Exit")
+    
+    choice = input("Enter your choice 1-4: ")
+    if choice == '1':
+        create_quiz()
+    elif choice == '2':
+        developer_info()
+    elif choice == '3':
+        print("Feature under development.")
+        main_menu()
+    elif choice == '4':
+        print("Goodbye!")
+        exit()
+    else:
+        print("Invalid choice. Please try again.")
+        main_menu()
+
+
 with open('questions.txt', 'a') as file:
     while True:
         #Ask for question and options
