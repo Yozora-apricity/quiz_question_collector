@@ -102,6 +102,7 @@ def create_quiz():
             question_number = get_next_question_number()
             
             # Write file to make it more readable
+            file.write(f'\n--- Question {question_number} ---\n')
             file.write(f'Q{question_number}: {question}\n')
             file.write(f"A) {a}\n")
             file.write(f"B) {b}\n")
