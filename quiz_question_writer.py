@@ -122,7 +122,7 @@ def see_questions():
     try:
         with open('questions.txt', 'r') as file:
             content = file.read()
-            if content:
+            if content.strip(): # Check if file is not empty or spaces
                 print(content)
             else:
                 print("No questions available.")
@@ -158,9 +158,9 @@ def manage_questions():
                 question_num += 1
                 
         print("\nOptions:")
-        print("1. \033[31mDelete all questions\033[0m")
-        print("2. \033[38;5;214mDelete a specific question\033[0m")
-        print("3. Go back to the main menu")
+        print("1. \033[31m[🗑️] Delete all questions\033[0m")
+        print("2. \033[38;5;214m[❌] Delete a specific question\033[0m")
+        print("3.[🔙] Go back to the main menu")
 
         choice = input("\033[97mEnter your choice (1-3): \033[0m")
 
