@@ -33,11 +33,12 @@ from datetime import datetime
 
 def main_menu():
     print("\n\033[32mWelcome to the Main Menu!\033[0m")
-    print("1. \033[34mCreate Questions\033[0m")
-    print("2. \033[35mDeveloper Info\033[0m")
-    print("3. \033[33mSee Questions\033[0m")
-    print("4. \033[36mManage Questions\033[0m")
-    print("5. \033[91mExit\033[0m")
+    print("1. \033[34m[📝] Create Questions\033[0m")
+    print("2. \033[35m[👨‍💻] Developer Info\033[0m")
+    print("3. \033[33m[📚] See Questions\033[0m")
+    print("4. \033[36m[⚙️] Manage Questions\033[0m")
+    print("5. \033[91m[🚪] Exit Like a Legend\033[0m")
+
     
     choice = input("\033[97mEnter your choice 1-5: \033[0m")
     if choice == '1':
