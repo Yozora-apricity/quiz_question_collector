@@ -36,9 +36,8 @@ def main_menu():
     print("1. \033[34m[📝] Create Questions\033[0m")
     print("2. \033[35m[👨‍💻] Developer Info\033[0m")
     print("3. \033[33m[📚] See Questions\033[0m")
-    print("4. \033[36m[⚙️] Manage Questions\033[0m")
+    print("4. \033[36m[⚙️ ] Manage Questions\033[0m")
     print("5. \033[91m[🚪] Exit Like a Legend\033[0m")
-
     
     choice = input("\033[97mEnter your choice 1-5: \033[0m")
     if choice == '1':
@@ -79,7 +78,6 @@ def get_next_question_number():
             return sum(1 for line in lines if line.startswith("Q:"))
     except FileNotFoundError:
         return 0
-
 
 def create_quiz():
     print("\n--- Create Quiz Questions ---")
@@ -200,6 +198,5 @@ def delete_specific_question(content):
     except ValueError:
         print("Invalid input. Please enter a valid number.")
         manage_questions()
-        
         
 main_menu()
