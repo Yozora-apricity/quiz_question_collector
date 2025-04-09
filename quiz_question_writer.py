@@ -29,6 +29,8 @@
 # 7. IF invalid choice THEN REPEAT Main Menu
 # 8. END
 
+import time
+import sys
 from datetime import datetime
 
 def main_menu():
@@ -156,8 +158,8 @@ def manage_questions():
                 question_num += 1
                 
         print("\nOptions:")
-        print("1. Delete all questions")
-        print("2. Delete a specific question")
+        print("1. \033[31mDelete all questions\033[0m")
+        print("2. \033[38;5;214mDelete a specific question\033[0m")
         print("3. Go back to the main menu")
 
         choice = input("\033[97mEnter your choice (1-3): \033[0m")
@@ -178,6 +180,8 @@ def manage_questions():
 def delete_all_questions():
     confirm = input("Are you sure you want to delete all questions? (y/n): ").lower()
     if confirm == 'y':
+        print("Deleting all questions...")
+        loading_bar(5)  # Adding a 5-second delay with loading bar
         with open('questions.txt', 'w') as file:
             file.truncate(0)
         print("All questions have been deleted.")
@@ -213,6 +217,8 @@ def delete_specific_question(content):
         filtered_content = [line for line in content if line not in question_lines]
         
         #Save updated content to file
+        print(f"Deleting question {question_num}...")
+        loading_bar(3) # Adding a 3-second delay with loading bar
         with open('questions.txt', 'w') as file:
             file.writelines(filtered_content)
             
@@ -222,5 +228,13 @@ def delete_specific_question(content):
     except ValueError:
         print("Invalid input. Please enter a valid number.")
         manage_questions()
+        
+# Simulated loading bar with progress
+def loading_bar(duration):
+    for i in range(0, 101, 2):  # Update progress bar every 2%
+        time.sleep(duration / 50)
+        sys.stdout.write("\r[%-50s] %d%%" % ('=' * (i // 2), i))
+        sys.stdout.flush()
+    print()
         
 main_menu()
