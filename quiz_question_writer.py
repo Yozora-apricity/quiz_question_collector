@@ -54,7 +54,7 @@ def main_menu():
         print("Goodbye!")
         exit()
     else:
-        print("Invalid choice. Please try again.")
+        print("\033[97mInvalid choice. Please try again.\033[0m")
         main_menu()
 
 def developer_info():
@@ -68,7 +68,7 @@ def developer_info():
             main_menu()
             break
         elif choice == 'n':
-            print("Goodbye!")
+            print("\033[97mGoodbye! 😊\033[0m")
             exit()
         else:
             print("Invalid input. Please enter 'y' or 'n'.")
@@ -135,7 +135,7 @@ def see_questions():
             main_menu()
             break
         elif choice == 'n':
-            print("Goodbye!")
+            print("\033[97mGoodbye! 😊\033[0m")
             exit()
         else:
             print("Invalid input. Please enter 'y' or 'n'.")
