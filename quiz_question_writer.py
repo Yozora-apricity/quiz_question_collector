@@ -71,6 +71,15 @@ def developer_info():
         else:
             print("Invalid input. Please enter 'y' or 'n'.")
 
+def get_next_question_number():
+    try:
+        with open('questions.txt', 'r') as file:
+            lines = file.readlines()
+            return sum(1 for line in lines if line.startswith("Q:"))
+    except FileNotFoundError:
+        return 0
+
+
 def create_quiz():
     print("\n--- Create Quiz Questions ---")
     with open('questions.txt', 'a') as file:
@@ -89,8 +98,10 @@ def create_quiz():
                 correct = input("Enter the correct answer (a-d): ").lower()
             
             timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+            question_number = get_next_question_number() + 1
             
             # Write file to make it more readable
+            file.write(f'{question_number}.\n')
             file.write(f"Q: {question}\n")
             file.write(f"A) {a}\n")
             file.write(f"B) {b}\n")
