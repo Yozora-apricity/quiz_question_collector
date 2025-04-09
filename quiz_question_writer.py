@@ -158,7 +158,7 @@ def manage_questions():
                 question_num += 1
                 
         print("\nOptions:")
-        print("1. \033[31m[🗑️] Delete all questions\033[0m")
+        print("1. \033[31m[🗑️ ] Delete all questions\033[0m")
         print("2. \033[38;5;214m[❌] Delete a specific question\033[0m")
         print("3.[🔙] Go back to the main menu")
 
@@ -244,7 +244,11 @@ def loading_bar(duration):
         else:
             color = "\033[32m" # Green for 90-100%
         
-        sys.stdout.write(f"\r{color}%-50s\033[0m] {i}%") 
+        
+        #Display the loading bar
+        bar = '=' * (i // 2)  
+        spaces = ' ' * (50 - i // 2)
+        sys.stdout.write(f"\r{color}[{bar}{spaces}] {i}%") 
         sys.stdout.flush()
     print()
         
