@@ -37,7 +37,7 @@ def main_menu():
     print("2. \033[35mDeveloper Info\033[0m")
     print("3. \033[33mSee Questions\033[0m")
     print("4. \033[36mManage Questions\033[0m")
-    print("5.\033[91mExit\033[0m")
+    print("5. \033[91mExit\033[0m")
     
     choice = input("\033[97mEnter your choice 1-5: \033[0m")
     if choice == '1':
@@ -117,6 +117,17 @@ def see_questions():
                 print("No questions available.")
     except FileNotFoundError:
         print("No questions have been added yet.")
+        
+    while True:
+        choice = input("\nWould you like to go back to the main menu? (y/n): ").lower()
+        if choice == 'y':
+            main_menu()
+            break
+        elif choice == 'n':
+            print("Goodbye!")
+            exit()
+        else:
+            print("Invalid input. Please enter 'y' or 'n'.")
 
 def manage_questions():
     print("\n--- Manage Questions ---")
