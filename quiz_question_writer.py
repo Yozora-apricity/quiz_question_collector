@@ -102,6 +102,10 @@ def create_quiz():
             timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
             question_number = get_next_question_number()
             
+            # Write to file with progress bar
+            print("\nSaving your question...")
+            loading_bar(3)
+            
             # Write file to make it more readable
             file.write(f'\n--- Question {question_number} ---\n')
             file.write(f'Q{question_number}: {question}\n')
