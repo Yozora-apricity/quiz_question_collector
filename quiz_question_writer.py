@@ -233,7 +233,18 @@ def delete_specific_question(content):
 def loading_bar(duration):
     for i in range(0, 101, 2):  # Update progress bar every 2%
         time.sleep(duration / 50)
-        sys.stdout.write("\r[%-50s] %d%%" % ('=' * (i // 2), i))
+        
+        #Add Color to the loading bar
+        if i < 30:
+             color = "\033[31m"  # Red for 0-29%
+        elif i < 60:
+            color = "\033[33m"  # Yellow for 30-59%
+        elif i < 90:
+            color = "\033[34m"  # Blue for 60-89%
+        else:
+            color = "\033[32m" # Green for 90-100%
+        
+        sys.stdout.write(f"\r{color}%-50s\033[0m] {i}%") 
         sys.stdout.flush()
     print()
         
