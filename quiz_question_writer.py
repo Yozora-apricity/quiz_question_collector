@@ -34,7 +34,7 @@ from datetime import datetime
 def main_menu():
     print("\n\033[32mWelcome to the Main Menu!\033[0m")
     print("1. \033[34m[📝] Create Questions\033[0m")
-    print("2. \033[35m[👨‍💻] Developer Info\033[0m")
+    print("2. \033[35m[💻] Developer Info\033[0m")
     print("3. \033[33m[📚] See Questions\033[0m")
     print("4. \033[36m[⚙️ ] Manage Questions\033[0m")
     print("5. \033[91m[🚪] Exit Like a Legend\033[0m")
@@ -186,15 +186,36 @@ def delete_all_questions():
 def delete_specific_question(content):
     try:
         question_num = int(input("Enter the question number to delete: "))
-        if question_num < 1 or question_num > len(content):
-            print("Invalid question number.")
-            manage_questions()
-        else:
-            question_lines = [line for line in content if not line.startswith(f"{question_num}.")]
-            with open('questions.txt', 'w') as file:
-                file.writelines(question_lines)
-            print(f"Question {question_num} has been deleted.")
-            manage_questions()
+        question_start = f'Q{question_num}:'
+        
+        #Find all lines related to the question number
+        question_lines = []
+        question_block = False
+        
+        for idx, line in enumerate(content):
+            if line.startswith(question_start):
+                question_block = True
+            if question_block:
+                question_lines.append(line)
+            if question_block and line.startswith("---"):
+                question_block = False
+                break
+            
+        #Check if the question exists
+        if not question_lines:
+            print(f'Question {question_num} does not exist.')
+            return
+        
+        #Filter out the question block from the content
+        filtered_content = [line for line in content if line not in question_lines]
+        
+        #Save updated content to file
+        with open('questions.txt', 'w') as file:
+            file.writelines(filtered_content)
+            
+        print(f"Question {question_num} has been deleted.")
+        manage_questions()
+        
     except ValueError:
         print("Invalid input. Please enter a valid number.")
         manage_questions()
