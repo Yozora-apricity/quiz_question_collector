@@ -1,33 +1,49 @@
 # Pseudo Code:
 # 1. START
-# 2. DISPLAY Main Menu with options:
+# 2. CALL auto_reindex_questions()
+# 3. SHOW Main Menu with options:
 #    a. Create Questions
 #    b. Developer Info
 #    c. See Questions
-#    d. Exit
-# 3. IF user selects 'Create Questions' THEN
+#    d. Manage Questions
+#    e. Exit
+# 4. WAIT for user input
+# 5. IF 'Create Questions' THEN
 #    a. OPEN "questions.txt" in append mode
-#    b. WHILE True DO
-#       i. GET question and options (a, b, c, d)
-#       ii. GET correct answer (a-d)
-#       iii. SAVE question, options, correct answer, and timestamp TO "questions.txt"
-#       iv. ASK "Add another question? (y/n)"
-#       v. IF 'n' THEN BREAK
-#    c. CLOSE file
-#    d. RETURN to Main Menu
-# 4. IF user selects 'Developer Info' THEN
-#    a. DISPLAY developer info (name, email, GitHub)
-#    b. ASK "Go back to main menu? (y/n)"
-#    c. IF 'y' THEN RETURN to Main Menu
-#    d. IF 'n' THEN EXIT
-# 5. IF user selects 'See Questions' THEN
-#    a. OPEN "questions.txt"
-#    b. IF file is empty THEN DISPLAY "No questions"
-#    c. ELSE DISPLAY all questions
-#    d. RETURN to Main Menu
-# 6. IF user selects 'Exit' THEN EXIT
-# 7. IF invalid choice THEN REPEAT Main Menu
-# 8. END
+#    b. REPEAT until done:
+#       i. GET question and options
+#       ii. VALIDATE answer (a-d)
+#       iii. GET timestamp
+#       iv. GENERATE question number
+#       v. SHOW loading bar
+#       vi. APPEND question to "questions.txt"
+#       vii. ASK if more questions
+#       viii. IF 'no' THEN BREAK loop
+#    c. RETURN to Main Menu
+# 6. IF 'Developer Info' THEN
+#    a. DISPLAY developer info
+#    b. ASK "Go back to main menu?"
+#    c. IF 'yes' RETURN to Main Menu
+#    d. IF 'no' EXIT
+# 7. IF 'See Questions' THEN
+#    a. OPEN and READ "questions.txt"
+#    b. IF empty THEN DISPLAY "No questions"
+#    c. ELSE DISPLAY questions
+#    d. ASK "Go back to main menu?"
+#    e. IF 'yes' RETURN to Main Menu
+#    f. IF 'no' EXIT
+# 8. IF 'Manage Questions' THEN
+#    a. DISPLAY questions
+#    b. SHOW options to:
+#       i. Delete All Questions
+#       ii. Delete Specific Question
+#       iii. Return to Main Menu
+#    c. IF 'Delete All' THEN confirm and clear file
+#    d. IF 'Delete Specific' THEN remove selected question
+#    e. RETURN to Main Menu
+# 9. IF 'Exit' THEN DISPLAY goodbye message and END
+# 10. IF invalid input THEN SHOW error and repeat Main Menu
+# 11. END
 
 import sys
 import time
