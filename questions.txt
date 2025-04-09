@@ -1,1 +1,21 @@
 
+
+--- Question 1 ---
+Q1: What is the capital city of Japan?
+A) Tokyo
+B) Kyoto
+C) Nagasaki
+D) Hiroshima
+ANSWER: a
+--- Added on 2025-04-09 22:21:31 ---
+
+
+--- Question 1 ---
+Q1: What is 2 + 2 = ?
+A) 1
+B) 2
+C) 3
+D) 4
+ANSWER: d
+--- Added on 2025-04-09 22:22:08 ---
+

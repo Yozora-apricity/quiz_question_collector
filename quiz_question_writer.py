@@ -33,6 +33,39 @@ import sys
 import time
 from datetime import datetime
 
+# Auto Reindex Function
+def auto_reindex_questions():
+    try:
+        with open('questions.txt', 'r') as file:
+            content = file.read().strip()
+
+        if not content:
+            return
+
+        blocks = content.split('--- Question')
+        updated_blocks = []
+        question_number = 1
+
+        for block in blocks:
+            if block.strip() == "":
+                continue
+
+            lines = block.strip().split('\n')
+            for i, line in enumerate(lines):
+                if line.startswith('Q'):
+                    parts = line.split(':', 1)
+                    if len(parts) > 1:
+                        lines[i] = f"Q{question_number}: {parts[1].strip()}"
+            reindexed_block = f"--- Question {question_number} ---\n" + '\n'.join(lines)
+            updated_blocks.append(reindexed_block)
+            question_number += 1
+
+        with open('questions.txt', 'w') as file:
+            file.write('\n\n'.join(updated_blocks) + '\n')
+
+    except FileNotFoundError:
+        return
+
 def main_menu():
     print("\n\033[32mWelcome to the Main Menu!\033[0m")
     print("1. \033[34m[📝] Create Questions\033[0m")
@@ -256,5 +289,6 @@ def loading_bar(duration):
         sys.stdout.write(f"\r{color}[{bar}{spaces}] {i}%") 
         sys.stdout.flush()
     print()
-        
+
+auto_reindex_questions()    
 main_menu()
