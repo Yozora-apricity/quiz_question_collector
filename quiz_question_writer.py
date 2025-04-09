@@ -51,7 +51,7 @@ def main_menu():
     elif choice == '4':
         manage_questions()
     elif choice == '5':
-        print("Goodbye!")
+        print("\033[97mGoodbye! 😊\033[0m")
         exit()
     else:
         print("\033[97mInvalid choice. Please try again.\033[0m")
