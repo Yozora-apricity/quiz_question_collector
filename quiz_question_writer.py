@@ -153,7 +153,7 @@ def manage_questions():
         print("\nCurrent Questions:")
         question_num = 1
         for line in content:
-            if line.startswith('Q:'):
+            if line.startswith('Q'):
                 print(f"{question_num}. {line.strip()}")
                 question_num += 1
                 
