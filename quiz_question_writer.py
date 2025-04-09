@@ -75,7 +75,7 @@ def get_next_question_number():
     try:
         with open('questions.txt', 'r') as file:
             lines = file.readlines()
-            return sum(1 for line in lines if line.startswith("Q:"))
+            return len([line for line in lines if line.startswith('Q')]) + 1
     except FileNotFoundError:
         return 0
 
@@ -97,7 +97,7 @@ def create_quiz():
                 correct = input("Enter the correct answer (a-d): ").lower()
             
             timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-            question_number = get_next_question_number() + 1
+            question_number = get_next_question_number()
             
             # Write file to make it more readable
             file.write(f'Q{question_number}: {question}\n')
@@ -149,9 +149,12 @@ def manage_questions():
             return
         
         print("\nCurrent Questions:")
-        for idx, line in enumerate(content, 1):
-            if line.startswith("Q:"):
-                print(f"{idx}. {line.strip()}")  # Displaying question lines with their index
+        question_num = 1
+        for line in content:
+            if line.startswith('Q:'):
+                print(f"{question_num}. {line.strip()}")
+                question_num += 1
+                
         print("\nOptions:")
         print("1. Delete all questions")
         print("2. Delete a specific question")
