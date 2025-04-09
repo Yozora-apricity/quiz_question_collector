@@ -29,8 +29,8 @@
 # 7. IF invalid choice THEN REPEAT Main Menu
 # 8. END
 
-import time
 import sys
+import time
 from datetime import datetime
 
 def main_menu():
@@ -60,7 +60,8 @@ def main_menu():
 def developer_info():
     print("\nDeveloper: \033[96mGerald Tan Rogado\033[0m")
     print("Email: \033[95mgeraldtanrogado@gmail.com\033[0m")
-    print("Github Profile: \033[33mhttps://github.com/Yozora-apricity\033[0m")
+    print("Github Profile: \033[33m"
+          "https://github.com/Yozora-apricity\033[0m")
 
     while True:
         choice = input("\nWould you like to go back to the main menu? (y/n): ").lower()
@@ -177,7 +178,7 @@ def manage_questions():
     except FileNotFoundError:
         print("No questions have been added yet.")
 
-#Delete all questions
+# Delete all questions
 def delete_all_questions():
     confirm = input("Are you sure you want to delete all questions? (y/n): ").lower()
     if confirm == 'y':
@@ -244,7 +245,6 @@ def loading_bar(duration):
             color = "\033[34m"  # Blue for 60-89%
         else:
             color = "\033[32m" # Green for 90-100%
-        
         
         #Display the loading bar
         bar = '=' * (i // 2)  
