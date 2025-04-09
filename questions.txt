@@ -1,16 +1,10 @@
-Q1: 1 + 1
-A) 1
-B) 2
-C) 3
-D) 4
-ANSWER: b
---- Added on 2025-04-09 13:53:41 ---
 
-Q1: 2 + 2
-A) 1
-B) 2
-C) 3
-D) 4
-ANSWER: d
---- Added on 2025-04-09 13:53:56 ---
+
+Q3: What is capital of Japan?
+A) Tokyo
+B) Kyoto
+C) Nagasaki
+D) Hiroshima
+ANSWER: a
+--- Added on 2025-04-09 13:57:02 ---
 
