@@ -28,3 +28,23 @@
 # 5. If questions list is not empty:
 #    - Call start_quiz(questions)
 # 6. End
+
+import random
+
+def load_questions(filename='questions.txt'):
+    try:
+        with open(filename, 'r') as file:
+            file_content = file.read().strip()
+            if not file_content:
+                print("File is empty")
+                return []
+            
+            question_blocks = file_content.split("--- Question")
+            questions = []
+
+            for block in question_blocks:
+                if block.strip() == "":
+                    continue
+                
+            lines = block.strip().split("\n")
+            question_data = {}
