@@ -1,5 +1,5 @@
-
 --- Question 1 ---
+1 ---
 Q1: What is 2 + 2 =
 A) 1
 B) 2
@@ -7,4 +7,23 @@ C) 3
 D) 4
 ANSWER: d
 --- Added on 2025-05-03 12:21:01 ---
+
+--- Question 2 ---
+Q2: What is the Capital of Japan?
+A) Tokyo
+B) Kyoto
+C) Hiroshima
+D) Nagasaki
+ANSWER: a
+--- Added on 2025-05-03 12:57:11 ---
+
+
+--- Question 2 ---
+Q2: What is 2+3 =
+A) 1
+B) 3
+C) 5
+D) 7
+ANSWER: c
+--- Added on 2025-05-03 12:57:36 ---
 
