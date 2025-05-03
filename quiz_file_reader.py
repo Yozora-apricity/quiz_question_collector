@@ -78,7 +78,7 @@ class QuizApp:
     def __init__(self, master, questions):
         self.master = master
         self.master.title("Quiz Game")
-        self.master.geometry("600x800")
+        self.master.geometry("780x600")
         self.questions = questions
         self.score = 0
         self.index = 0
@@ -153,35 +153,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-'''def start_quiz(question_list):
-    print("\n\033[94m--- Welcome to the Quiz Game! ---\033[0m")
-    random.shuffle(question_list)
-    total_score = 0
-
-    for question_number, question in enumerate(question_list, 1):
-        print(f"\nQuestion {question_number}: {question['question']}")
-        print(f"a) {question['option_a']}")
-        print(f"b) {question['option_b']}")
-        print(f"c) {question['option_c']}")
-        print(f"d) {question['option_d']}")
-
-        user_answer = input("Your answer (a/b/c/d): ").lower()
-        while user_answer not in {'a', 'b', 'c', 'd'}:
-            user_answer = input("Please enter a valid option (a/b/c/d): ").lower()
-
-        if user_answer == question['correct_answer']:
-            print("\033[92mCorrect!\033[0m")
-            total_score += 1
-        else:
-            correct_key = question['correct_answer']
-            correct_text = question.get(f"option_{correct_key}", "Unknown")
-            print(f"\033[91mWrong! Correct answer was: {correct_key}) {correct_text}\033[0m")
-
-    print(f"\n\033[96mYour final score is {total_score}/{len(question_list)}.\033[0m")
-    print("\033[93mThanks for playing!\033[0m")
-
-# Main execution
-questions_from_file = load_questions()
-if questions_from_file:
-    start_quiz(questions_from_file)'''
