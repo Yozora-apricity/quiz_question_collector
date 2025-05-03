@@ -73,7 +73,7 @@ def load_questions(filename='questions.txt'):
     except FileNotFoundError:
         messagebox.showerror("Error", "Quiz File not found.")
         return []
-    
+
 class QuizApp:
     def __init__(self, window, questions_list):
         self.window = window
@@ -84,13 +84,28 @@ class QuizApp:
         self.questions = questions_list
         self.score = 0
         self.current_question_index = 0
+        self.time_left = 180  # 3 minutes for 10 questions
 
         random.shuffle(self.questions)
 
+        # Score and Timer Bar
+        self.top_frame = tk.Frame(window, bg="#2d2d2d")
+        self.top_frame.pack(fill="x", pady=(10, 0))
+
+        self.score_label = tk.Label(self.top_frame, text=f"Score: {self.score}",
+                                    font=("Arial", 12), bg="#2d2d2d", fg="white")
+        self.score_label.pack(side="left", padx=20)
+
+        self.timer_label = tk.Label(self.top_frame, text="Time Left: 03:00",
+                                    font=("Arial", 12), bg="#2d2d2d", fg="white")
+        self.timer_label.pack(side="right", padx=20)
+
+        # Question
         self.question_label = tk.Label(window, text="", font=("Arial", 16), wraplength=700, justify="left",
                                        bg="#2d2d2d", fg="#f1f1f1")
         self.question_label.pack(pady=20)
 
+        # Options
         self.options_frame = tk.Frame(window, bg="#2d2d2d")
         self.options_frame.pack()
 
@@ -128,6 +143,7 @@ class QuizApp:
         self.next_button.config(state=tk.DISABLED)
 
         self.load_next_question()
+        self.update_timer()
 
     def load_next_question(self):
         if self.current_question_index < len(self.questions):
@@ -158,6 +174,7 @@ class QuizApp:
                 fg="red"
             )
 
+        self.score_label.config(text=f"Score: {self.score}")
         for option_button in self.option_buttons:
             option_button.config(state=tk.DISABLED)
         self.next_button.config(state=tk.NORMAL)
@@ -168,6 +185,17 @@ class QuizApp:
             f"Your final score is {self.score}/{len(self.questions)}.\nThanks for playing!"
         )
         self.window.destroy()
+
+    def update_timer(self):
+        minutes = self.time_left // 60
+        seconds = self.time_left % 60
+        self.timer_label.config(text=f"Time Left: {minutes:02}:{seconds:02}")
+
+        if self.time_left > 0:
+            self.time_left -= 1
+            self.window.after(1000, self.update_timer)
+        else:
+            self.display_final_score()
 
 def main():
     question_list = load_questions()
