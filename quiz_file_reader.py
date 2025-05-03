@@ -79,34 +79,41 @@ class QuizApp:
         self.master = master
         self.master.title("Quiz Game")
         self.master.geometry("780x600")
+        self.master.configure(bg="#2d2d2d")
+
         self.questions = questions
         self.score = 0
         self.index = 0
-        
+
         random.shuffle(self.questions)
-        
-        self.question_label = tk.Label(master, text="", font=("Arial", 16), wraplength=500, justify="left")
+
+        self.question_label = tk.Label(master, text="", font=("Arial", 16), wraplength=700, justify="left",
+                                       bg="#2d2d2d", fg="#f1f1f1")
         self.question_label.pack(pady=20)
-        
-        self.buttons_frame = tk.Frame(master)
+
+        self.buttons_frame = tk.Frame(master, bg="#2d2d2d")
         self.buttons_frame.pack()
-        
+
         self.option_buttons = []
         for opt in ['a', 'b', 'c', 'd']:
-            btn = tk.Button(self.buttons_frame, text="", width=50, font =("Arial", 12))
+            btn = tk.Button(self.buttons_frame, text="", width=50, font=("Arial", 12),
+                            bg="#3c3f41", fg="#f1f1f1", activebackground="#5c5f66", relief=tk.FLAT)
             btn.config(command=lambda opt=opt: self.check_answer(opt))
             btn.pack(pady=5)
             self.option_buttons.append(btn)
-            
-        self.feedback_label: tk.Label = tk.Label(master, text="", font=("Arial", 14))
+
+        self.feedback_label = tk.Label(master, text="", font=("Arial", 14),
+                                       bg="#2d2d2d", fg="#f1f1f1")
         self.feedback_label.pack(pady=10)
-            
-        self.next_button = tk.Button(master, text="Next Question", font = ("Arial", 12), command=self.next_question)
+
+        self.next_button = tk.Button(master, text="Next Question", font=("Arial", 12),
+                                     command=self.next_question,
+                                     bg="#4b4f53", fg="#f1f1f1", activebackground="#6e7178", relief=tk.FLAT)
         self.next_button.pack(pady=10)
         self.next_button.config(state=tk.DISABLED)
-        
+
         self.load_question()
-        
+
     def load_question(self):
         if self.index < len(self.questions):
             q = self.questions[self.index]
@@ -121,13 +128,13 @@ class QuizApp:
             self.next_button.config(state=tk.DISABLED)
         else:
             self.show_result()
-            
+
     def check_answer(self, selected):
         correct = self.questions[self.index]['correct_answer']
         correct_text = self.questions[self.index].get(f'option_{correct}', 'Unknown')
 
         if selected == correct:
-            self.feedback_label.config(text="Correct!", fg="green")
+            self.feedback_label.config(text="Correct!", fg="lime green")
             self.score += 1
         else:
             self.feedback_label.config(text=f"Wrong! Correct answer was: {correct}) {correct_text}", fg="red")
@@ -135,7 +142,7 @@ class QuizApp:
         for btn in self.option_buttons:
             btn.config(state=tk.DISABLED)
         self.next_button.config(state=tk.NORMAL)
-        
+
     def next_question(self):
         self.index += 1
         self.load_question()
@@ -143,7 +150,7 @@ class QuizApp:
     def show_result(self):
         messagebox.showinfo("Quiz Completed", f"Your final score is {self.score}/{len(self.questions)}.\nThanks for playing!")
         self.master.destroy()
-        
+
 def main():
     questions = load_questions()
     if questions:
