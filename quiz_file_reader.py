@@ -92,9 +92,9 @@ class QuizApp(tk.Tk):
         self.buttons_frame.pack()
         
         self.option_buttons = []
-        for opt in ['A', 'B', 'C', 'D']:
+        for opt in ['a', 'b', 'c', 'd']:
             btn = tk.Button(self.buttons_frame, text="", width=50, font =("Arial", 12))
-            btn.config(command=lambda opt=opt: self.check_answer(o))
+            btn.config(command=lambda opt=opt: self.check_answer(opt))
             btn.pack(pady=5)
             self.option_buttons.append(btn)
             
