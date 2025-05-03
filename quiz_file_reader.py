@@ -74,7 +74,7 @@ def load_questions(filename='questions.txt'):
         messagebox.showerror("Error", "Quiz File not found.")
         return []
     
-class QuizApp(tk.Tk):
+class QuizApp:
     def __init__(self, master, questions):
         self.master = master
         self.master.title("Quiz Game")
