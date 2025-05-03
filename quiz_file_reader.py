@@ -29,6 +29,8 @@
 #    - Call start_quiz(questions)
 # 6. End
 
+import tkinter as tk
+from tkinter import messagebox
 import random
 
 def load_questions(filename='questions.txt'):
@@ -69,9 +71,38 @@ def load_questions(filename='questions.txt'):
         return question_list
 
     except FileNotFoundError:
-        print("Quiz file not found")
+        messagebox.showerror("Error", "Quiz File not found.")
         return []
     
+class QuizApp(tk.Tk):
+    def __init__(self, master, questions):
+        self.master = master
+        self.master.title("Quiz Game")
+        self.master.geometry("600x800")
+        self.questions = questions
+        self.score = 0
+        self.index = 0
+        
+        random.shuffle(self.questions)
+        
+        self.question_label = tk.Label(master, text="", font=("Arial", 16), wraplength=500, justify="left")
+        self.question_label.pack(pady=20)
+        
+        self.buttons_frame = tk.Frame(master)
+        self.buttons_frame.pack()
+        
+        self.option_buttons = []
+        for opt in ['A', 'B', 'C', 'D']:
+            btn = tk.Button(self.buttons_frame, text="", width=50, font =("Arial", 12), command=lambda opt=opt: self.check_answer(o))
+            btn.pack(pady=5)
+            self.option_buttons.append(btn)
+            
+        self.next_button = tk.Button(master, text="Next Question", font = ("Arial", 12), command=self.next_question)
+        self.next_button.pack(pady=10)
+        self.next_button.config(state=tk.DISABLED)
+        
+        self.load_question()
+            
 def start_quiz(question_list):
     print("\n\033[94m--- Welcome to the Quiz Game! ---\033[0m")
     random.shuffle(question_list)
