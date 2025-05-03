@@ -93,17 +93,68 @@ class QuizApp(tk.Tk):
         
         self.option_buttons = []
         for opt in ['A', 'B', 'C', 'D']:
-            btn = tk.Button(self.buttons_frame, text="", width=50, font =("Arial", 12), command=lambda opt=opt: self.check_answer(o))
+            btn = tk.Button(self.buttons_frame, text="", width=50, font =("Arial", 12))
+            btn.config(command=lambda opt=opt: self.check_answer(o))
             btn.pack(pady=5)
             self.option_buttons.append(btn)
+            
+        self.feedback_label: tk.Label = tk.Label(master, text="", font=("Arial", 14))
+        self.feedback_label.pack(pady=10)
             
         self.next_button = tk.Button(master, text="Next Question", font = ("Arial", 12), command=self.next_question)
         self.next_button.pack(pady=10)
         self.next_button.config(state=tk.DISABLED)
         
         self.load_question()
+        
+    def load_question(self):
+        if self.index < len(self.questions):
+            q = self.questions[self.index]
+            self.question_label.config(text=f"Q{self.index + 1}: {q['question']}")
+            self.option_buttons[0].config(text=f"a) {q['option_a']}")
+            self.option_buttons[1].config(text=f"b) {q['option_b']}")
+            self.option_buttons[2].config(text=f"c) {q['option_c']}")
+            self.option_buttons[3].config(text=f"d) {q['option_d']}")
+            self.feedback_label.config(text="")
+            for btn in self.option_buttons:
+                btn.config(state=tk.NORMAL)
+            self.next_button.config(state=tk.DISABLED)
+        else:
+            self.show_result()
             
-def start_quiz(question_list):
+    def check_answer(self, selected):
+        correct = self.questions[self.index]['correct_answer']
+        correct_text = self.questions[self.index].get(f'option_{correct}', 'Unknown')
+
+        if selected == correct:
+            self.feedback_label.config(text="Correct!", fg="green")
+            self.score += 1
+        else:
+            self.feedback_label.config(text=f"Wrong! Correct answer was: {correct}) {correct_text}", fg="red")
+
+        for btn in self.option_buttons:
+            btn.config(state=tk.DISABLED)
+        self.next_button.config(state=tk.NORMAL)
+        
+    def next_question(self):
+        self.index += 1
+        self.load_question()
+
+    def show_result(self):
+        messagebox.showinfo("Quiz Completed", f"Your final score is {self.score}/{len(self.questions)}.\nThanks for playing!")
+        self.master.destroy()
+        
+def main():
+    questions = load_questions()
+    if questions:
+        root = tk.Tk()
+        app = QuizApp(root, questions)
+        root.mainloop()
+
+if __name__ == "__main__":
+    main()
+
+'''def start_quiz(question_list):
     print("\n\033[94m--- Welcome to the Quiz Game! ---\033[0m")
     random.shuffle(question_list)
     total_score = 0
@@ -133,4 +184,4 @@ def start_quiz(question_list):
 # Main execution
 questions_from_file = load_questions()
 if questions_from_file:
-    start_quiz(questions_from_file)
+    start_quiz(questions_from_file)'''
