@@ -88,7 +88,14 @@ class QuizApp:
         self.current_question_index = 0
         self.time_left = 180  # 3 minutes
 
-        self.top_frame = tk.Frame(window, bg="#2d2d2d")
+        # UI Components
+        self.create_ui()
+
+        self.load_next_question()
+        self.update_timer()
+
+    def create_ui(self):
+        self.top_frame = tk.Frame(self.window, bg="#2d2d2d")
         self.top_frame.pack(fill="x", pady=(10, 0))
 
         self.score_label = tk.Label(self.top_frame, text=f"Score: {self.score}",
@@ -99,12 +106,12 @@ class QuizApp:
                                     font=("Arial", 12), bg="#2d2d2d", fg="white")
         self.timer_label.pack(side="right", padx=20)
 
-        self.question_label = tk.Label(window, text="", font=("Arial", 16),
+        self.question_label = tk.Label(self.window, text="", font=("Arial", 16),
                                        wraplength=700, justify="left",
                                        bg="#2d2d2d", fg="#f1f1f1")
         self.question_label.pack(pady=20)
 
-        self.options_frame = tk.Frame(window, bg="#2d2d2d")
+        self.options_frame = tk.Frame(self.window, bg="#2d2d2d")
         self.options_frame.pack()
 
         self.option_buttons = []
@@ -123,24 +130,18 @@ class QuizApp:
             option_button.config(command=lambda selected_option=option_letter: self.check_answer(selected_option))
 
             # Add hover animation
-            def on_enter(e, button=option_button):
-                button.config(bg="#5c5f66", fg="#ffffff")
-
-            def on_leave(e, button=option_button):
-                button.config(bg="#3c3f41", fg="#f1f1f1")
-
-            option_button.bind("<Enter>", on_enter)
-            option_button.bind("<Leave>", on_leave)
+            option_button.bind("<Enter>", lambda e, button=option_button: button.config(bg="#5c5f66", fg="#ffffff"))
+            option_button.bind("<Leave>", lambda e, button=option_button: button.config(bg="#3c3f41", fg="#f1f1f1"))
 
             option_button.pack(pady=5)
             self.option_buttons.append(option_button)
 
-        self.feedback_label = tk.Label(window, text="", font=("Arial", 14),
+        self.feedback_label = tk.Label(self.window, text="", font=("Arial", 14),
                                        bg="#2d2d2d", fg="#f1f1f1")
         self.feedback_label.pack(pady=10)
 
         self.next_button = tk.Button(
-            window,
+            self.window,
             text="Next Question",
             font=("Arial", 12),
             command=self.load_next_question,
@@ -151,9 +152,6 @@ class QuizApp:
         )
         self.next_button.pack(pady=10)
         self.next_button.config(state=tk.DISABLED)
-
-        self.load_next_question()
-        self.update_timer()
 
     def load_next_question(self):
         if self.current_question_index < len(self.questions):
