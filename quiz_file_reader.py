@@ -44,11 +44,11 @@ def load_questions(filename='questions.txt'):
             question_blocks = file_content.split("--- Question")
             question_list = []
 
-            for block in question_blocks:
-                if block.strip() == "":
+            for question_block in question_blocks:
+                if question_block.strip() == "":
                     continue
 
-                lines = block.strip().split("\n")
+                lines = question_block.strip().split("\n")
                 question_data = {}
 
                 for line in lines:
@@ -75,87 +75,105 @@ def load_questions(filename='questions.txt'):
         return []
     
 class QuizApp:
-    def __init__(self, master, questions):
-        self.master = master
-        self.master.title("Quiz Game")
-        self.master.geometry("780x600")
-        self.master.configure(bg="#2d2d2d")
+    def __init__(self, window, questions_list):
+        self.window = window
+        self.window.title("Quiz Game")
+        self.window.geometry("780x600")
+        self.window.configure(bg="#2d2d2d")
 
-        self.questions = questions
+        self.questions = questions_list
         self.score = 0
-        self.index = 0
+        self.current_question_index = 0
 
         random.shuffle(self.questions)
 
-        self.question_label = tk.Label(master, text="", font=("Arial", 16), wraplength=700, justify="left",
+        self.question_label = tk.Label(window, text="", font=("Arial", 16), wraplength=700, justify="left",
                                        bg="#2d2d2d", fg="#f1f1f1")
         self.question_label.pack(pady=20)
 
-        self.buttons_frame = tk.Frame(master, bg="#2d2d2d")
-        self.buttons_frame.pack()
+        self.options_frame = tk.Frame(window, bg="#2d2d2d")
+        self.options_frame.pack()
 
         self.option_buttons = []
-        for opt in ['a', 'b', 'c', 'd']:
-            btn = tk.Button(self.buttons_frame, text="", width=50, font=("Arial", 12),
-                            bg="#3c3f41", fg="#f1f1f1", activebackground="#5c5f66", relief=tk.FLAT)
-            btn.config(command=lambda opt=opt: self.check_answer(opt))
-            btn.pack(pady=5)
-            self.option_buttons.append(btn)
+        for option_letter in ['a', 'b', 'c', 'd']:
+            option_button = tk.Button(
+                self.options_frame,
+                text="",
+                width=50,
+                font=("Arial", 12),
+                bg="#3c3f41",
+                fg="#f1f1f1",
+                activebackground="#5c5f66",
+                relief=tk.FLAT
+            )
+            option_button.config(command=lambda selected_option=option_letter: self.check_answer(selected_option))
+            option_button.pack(pady=5)
+            self.option_buttons.append(option_button)
 
-        self.feedback_label = tk.Label(master, text="", font=("Arial", 14),
+        self.feedback_label = tk.Label(window, text="", font=("Arial", 14),
                                        bg="#2d2d2d", fg="#f1f1f1")
         self.feedback_label.pack(pady=10)
 
-        self.next_button = tk.Button(master, text="Next Question", font=("Arial", 12),
-                                     command=self.next_question,
-                                     bg="#4b4f53", fg="#f1f1f1", activebackground="#6e7178", relief=tk.FLAT)
+        self.next_button = tk.Button(
+            window,
+            text="Next Question",
+            font=("Arial", 12),
+            command=self.load_next_question,
+            bg="#4b4f53",
+            fg="#f1f1f1",
+            activebackground="#6e7178",
+            relief=tk.FLAT
+        )
         self.next_button.pack(pady=10)
         self.next_button.config(state=tk.DISABLED)
 
-        self.load_question()
+        self.load_next_question()
 
-    def load_question(self):
-        if self.index < len(self.questions):
-            q = self.questions[self.index]
-            self.question_label.config(text=f"Q{self.index + 1}: {q['question']}")
-            self.option_buttons[0].config(text=f"a) {q['option_a']}")
-            self.option_buttons[1].config(text=f"b) {q['option_b']}")
-            self.option_buttons[2].config(text=f"c) {q['option_c']}")
-            self.option_buttons[3].config(text=f"d) {q['option_d']}")
+    def load_next_question(self):
+        if self.current_question_index < len(self.questions):
+            current_question = self.questions[self.current_question_index]
+            self.question_label.config(text=f"Q{self.current_question_index + 1}: {current_question['question']}")
+            self.option_buttons[0].config(text=f"a) {current_question['option_a']}")
+            self.option_buttons[1].config(text=f"b) {current_question['option_b']}")
+            self.option_buttons[2].config(text=f"c) {current_question['option_c']}")
+            self.option_buttons[3].config(text=f"d) {current_question['option_d']}")
             self.feedback_label.config(text="")
-            for btn in self.option_buttons:
-                btn.config(state=tk.NORMAL)
+            for option_button in self.option_buttons:
+                option_button.config(state=tk.NORMAL)
             self.next_button.config(state=tk.DISABLED)
         else:
-            self.show_result()
+            self.display_final_score()
 
-    def check_answer(self, selected):
-        correct = self.questions[self.index]['correct_answer']
-        correct_text = self.questions[self.index].get(f'option_{correct}', 'Unknown')
+    def check_answer(self, selected_option):
+        current_question = self.questions[self.current_question_index]
+        correct_option_letter = current_question['correct_answer']
+        correct_option_text = current_question.get(f'option_{correct_option_letter}', 'Unknown')
 
-        if selected == correct:
+        if selected_option == correct_option_letter:
             self.feedback_label.config(text="Correct!", fg="lime green")
             self.score += 1
         else:
-            self.feedback_label.config(text=f"Wrong! Correct answer was: {correct}) {correct_text}", fg="red")
+            self.feedback_label.config(
+                text=f"Wrong! Correct answer was: {correct_option_letter}) {correct_option_text}",
+                fg="red"
+            )
 
-        for btn in self.option_buttons:
-            btn.config(state=tk.DISABLED)
+        for option_button in self.option_buttons:
+            option_button.config(state=tk.DISABLED)
         self.next_button.config(state=tk.NORMAL)
 
-    def next_question(self):
-        self.index += 1
-        self.load_question()
-
-    def show_result(self):
-        messagebox.showinfo("Quiz Completed", f"Your final score is {self.score}/{len(self.questions)}.\nThanks for playing!")
-        self.master.destroy()
+    def display_final_score(self):
+        messagebox.showinfo(
+            "Quiz Completed",
+            f"Your final score is {self.score}/{len(self.questions)}.\nThanks for playing!"
+        )
+        self.window.destroy()
 
 def main():
-    questions = load_questions()
-    if questions:
+    question_list = load_questions()
+    if question_list:
         root = tk.Tk()
-        app = QuizApp(root, questions)
+        quiz_app = QuizApp(root, question_list)
         root.mainloop()
 
 if __name__ == "__main__":
