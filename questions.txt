@@ -1,29 +1,80 @@
+
 --- Question 1 ---
-1 ---
 Q1: What is 2 + 2 =
 A) 1
 B) 2
 C) 3
 D) 4
 ANSWER: d
---- Added on 2025-05-03 12:21:01 ---
+--- Added on 2025-05-04 15:05:00 ---
+
 
 --- Question 2 ---
-Q2: What is the Capital of Japan?
-A) Tokyo
-B) Kyoto
-C) Hiroshima
-D) Nagasaki
+Q2: Who painted the Mona Lisa?
+A) Claude Monet
+B) Leonardo Da Vinci
+C) Vincent Van Gogh
+D) Pablo Picasso
+ANSWER: b
+--- Added on 2025-05-04 15:06:25 ---
+
+
+--- Question 2 ---
+Q2: What is the Capital City of Thailand?
+A) Bangkok
+B) Bangpusi
+C) Bangdik
+D) Bangtits
 ANSWER: a
---- Added on 2025-05-03 12:57:11 ---
+--- Added on 2025-05-04 15:07:06 ---
 
 
 --- Question 2 ---
-Q2: What is 2+3 =
-A) 1
-B) 3
-C) 5
-D) 7
+Q2: What is the Capital City of Japan?
+A) Hiroshima
+B) Nagasaki
+C) Kyoto
+D) Tokyo
+ANSWER: d
+--- Added on 2025-05-04 15:07:53 ---
+
+
+--- Question 2 ---
+Q2: What is the title of Edvard Munch’s most famous painting?
+A) The Storm
+B) The Cry
+C) The Scream
+D) The Silence
 ANSWER: c
---- Added on 2025-05-03 12:57:36 ---
+--- Added on 2025-05-04 15:08:33 ---
+
+
+--- Question 2 ---
+Q2: What painting features a woman with a mysterious smile?
+A) The Girl with a Pearl Earring
+B) The Mona Lisa
+C) The Kiss
+D) American Gothic
+ANSWER: b
+--- Added on 2025-05-04 15:09:34 ---
+
+
+--- Question 2 ---
+Q2: Who painted The Persistence of Memory (the melting clocks)?
+A) René Magritte
+B) Marcel Duchamp
+C) Pablo Picasso
+D) Salvador Dalí
+ANSWER: d
+--- Added on 2025-05-04 15:10:34 ---
+
+
+--- Question 2 ---
+Q2: Who painted The Birth of Venus?
+A) Raphael
+B) Michelangelo
+C) Sandro Botticelli
+D) Caravaggio
+ANSWER: c
+--- Added on 2025-05-04 15:11:36 ---
 
