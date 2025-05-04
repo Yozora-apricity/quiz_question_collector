@@ -1,5 +1,5 @@
-
 --- Question 1 ---
+1 ---
 Q1: What is 2 + 2 =
 A) 1
 B) 2
@@ -8,8 +8,8 @@ D) 4
 ANSWER: d
 --- Added on 2025-05-04 15:05:00 ---
 
-
 --- Question 2 ---
+2 ---
 Q2: Who painted the Mona Lisa?
 A) Claude Monet
 B) Leonardo Da Vinci
@@ -18,9 +18,9 @@ D) Pablo Picasso
 ANSWER: b
 --- Added on 2025-05-04 15:06:25 ---
 
-
---- Question 2 ---
-Q2: What is the Capital City of Thailand?
+--- Question 3 ---
+2 ---
+Q3: What is the Capital City of Thailand?
 A) Bangkok
 B) Bangpusi
 C) Bangdik
@@ -28,9 +28,9 @@ D) Bangtits
 ANSWER: a
 --- Added on 2025-05-04 15:07:06 ---
 
-
---- Question 2 ---
-Q2: What is the Capital City of Japan?
+--- Question 4 ---
+2 ---
+Q4: What is the Capital City of Japan?
 A) Hiroshima
 B) Nagasaki
 C) Kyoto
@@ -38,9 +38,9 @@ D) Tokyo
 ANSWER: d
 --- Added on 2025-05-04 15:07:53 ---
 
-
---- Question 2 ---
-Q2: What is the title of Edvard Munch’s most famous painting?
+--- Question 5 ---
+2 ---
+Q5: What is the title of Edvard Munch’s most famous painting?
 A) The Storm
 B) The Cry
 C) The Scream
@@ -48,9 +48,9 @@ D) The Silence
 ANSWER: c
 --- Added on 2025-05-04 15:08:33 ---
 
-
---- Question 2 ---
-Q2: What painting features a woman with a mysterious smile?
+--- Question 6 ---
+2 ---
+Q6: What painting features a woman with a mysterious smile?
 A) The Girl with a Pearl Earring
 B) The Mona Lisa
 C) The Kiss
@@ -58,9 +58,9 @@ D) American Gothic
 ANSWER: b
 --- Added on 2025-05-04 15:09:34 ---
 
-
---- Question 2 ---
-Q2: Who painted The Persistence of Memory (the melting clocks)?
+--- Question 7 ---
+2 ---
+Q7: Who painted The Persistence of Memory (the melting clocks)?
 A) René Magritte
 B) Marcel Duchamp
 C) Pablo Picasso
@@ -68,13 +68,32 @@ D) Salvador Dalí
 ANSWER: d
 --- Added on 2025-05-04 15:10:34 ---
 
-
---- Question 2 ---
-Q2: Who painted The Birth of Venus?
+--- Question 8 ---
+2 ---
+Q8: Who painted The Birth of Venus?
 A) Raphael
 B) Michelangelo
 C) Sandro Botticelli
 D) Caravaggio
 ANSWER: c
 --- Added on 2025-05-04 15:11:36 ---
+
+--- Question 9 ---
+Q9: Who painted The Creation of Adam, the iconic fresco on the ceiling of the Sistine Chapel?
+A) Leonardo da Vinci
+B) Michelangelo
+C) Raphael
+D) Caravaggio
+ANSWER: b
+--- Added on 2025-05-04 15:18:29 ---
+
+
+--- Question 9 ---
+Q9: Who painted the dramatic series of artworks titled The Seven Plagues of Egypt, which depicts the biblical story of Moses and the plagues?
+A) Salvador Dalí
+B) John Martin
+C) Marc Chagall
+D) Gustave Doré
+ANSWER: b
+--- Added on 2025-05-04 15:21:10 ---
 
