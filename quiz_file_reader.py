@@ -1,33 +1,69 @@
-# Quiz Program Pseudo Code
+# Quiz Program Pseudo Code (GUI Version)
 # 1. Start
-# 2. Define function load_questions():
+# 2. Define function load_questions(filename):
 #    a. Try to open 'questions.txt' and read content
 #    b. If file not found:
-#       - Display "File not found"
-#       - Return empty list
-#    c. Split content by "--- Question"
-#    d. For each block:
-#       i.   Parse question text, options a–d, and correct answer
-#       ii.  Store in a dictionary
-#       iii. Add to list of questions
-#    e. Return list of parsed questions
-# 3. Define function start_quiz(questions):
-#    a. Shuffle the list of questions randomly
-#    b. Initialize score = 0
-#    c. For each question in the list:
-#       i.   Display question and options
-#       ii.  Ask user for answer
-#       iii. Validate input (must be a/b/c/d)
-#       iv.  If answer is correct:
-#                - Increment score
-#                - Display "Correct!"
-#            Else:
-#                - Display "Wrong!" and show correct answer
-#    d. After all questions, display final score and thank user
-# 4. Call load_questions() and store result
-# 5. If questions list is not empty:
-#    - Call start_quiz(questions)
-# 6. End
+#        - Show error message using messagebox
+#        - Return empty list
+#    c. If file is empty:
+#        - Print "System: File is empty"
+#        - Return empty list
+#    d. Split content by "--- Question" to separate individual questions
+#    e. For each question block:
+#        i. Skip if block is empty
+#        ii. Parse question text (Q:), options A–D (A), and correct answer (ANSWER:)
+#        iii. Store values in a dictionary
+#        iv. Append dictionary to a list of questions
+#    f. Return list of parsed question dictionaries
+# 3. Define class QuizApp:
+#    a. On initialization:
+#        i. Setup window with title, size, background color
+#        ii. Shuffle the question list
+#        iii. Initialize score and timer (3 minutes)
+#        iv. Create UI components: labels, buttons, frames
+#        v. Load first question
+#        vi. Start timer countdown
+#    b. Define create_ui():
+#        i. Create top frame for score and timer
+#        ii. Create label for question text
+#        iii. Create buttons for options A–D with hover effects
+#        iv. Create feedback label
+#        v. Create "Next Question" button (initially disabled)
+#    c. Define load_next_question():
+#        i. If questions remain:
+#            - Display next question and options
+#            - Enable option buttons
+#            - Clear previous feedback
+#            - Disable "Next" button
+#            - Increment current question index
+#          Else:
+#            - Show final score and exit window
+#    d. Define check_answer(selected_option):
+#        i. Compare selected option with correct answer
+#        ii. If correct:
+#            - Show "Correct!" and increment score
+#          Else:
+#            - Show "Wrong!" and correct answer
+#        iii. Disable all option buttons
+#        iv. Enable "Next Question" button
+#        v. Update score label
+#    e. Define display_final_score():
+#        i. Show final score using messagebox
+#        ii. Close the application
+#    f. Define update_timer():
+#        i. Display remaining time in MM:SS format
+#        ii. If time remains:
+#            - Decrement time
+#            - Call update_timer() after 1 second
+#          Else:
+#            - Show final score and end quiz
+# 4. Define main():
+#    a. Call load_questions() to retrieve question list
+#    b. If list is not empty:
+#        - Create Tk root window
+#        - Instantiate QuizApp with question list
+#        - Run mainloop()
+# 5. End
 
 import tkinter as tk
 from tkinter import messagebox
